@@ -1,0 +1,23 @@
+{
+  "name": "kindergarten_1",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yapcona/kindergarden_administration_system.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yapcona/kindergarden_administration_system/issues"
+  },
+  "homepage": "https://github.com/yapcona/kindergarden_administration_system#readme",
+  "description": "",
+  "devDependencies": {
+    "electron": "^37.2.1"
+  }
+}
