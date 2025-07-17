@@ -13,11 +13,11 @@ function Login({ onLogin }) {
 
   return (
     <div className="ring">
-      <i style={{ "--clr": "#00ff99" }}></i>
-      <i style={{ "--clr": "#ff0b5d" }}></i>
-      <i style={{ "--clr": "#00ff99" }}></i>
+      <i style={{ "--clr": "#7fef70" }}></i>
+      <i style={{ "--clr": "#cdffcb" }}></i>
+      <i style={{ "--clr": "#7fef70" }}></i>
       <div className="login">
-        <h2>Login</h2>
+        <h2>Kita Dashboard</h2>
         <form onSubmit={handleSubmit}>
           <div className="inputBx">
             <input
