@@ -37,13 +37,10 @@
   }
 }
 
-
 /**************************** Style stuff ****************************/
 body {
   display: flex;
   justify-content: space-between;
-  
-  
 }
 
 .share-tech-mono-regular {
@@ -54,14 +51,14 @@ body {
 
 .-container {
   padding: 20px;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
   max-width: 800px;
   margin: 0 auto;
 }
 
 .headline {
   color: #7fef70;
-  font-family:"Share Tech Mono", monospace;
+  font-family: "Share Tech Mono", monospace;
 }
 
 .subtitle {
@@ -75,32 +72,28 @@ body {
 }
 
 .info-box {
-  background: #222;
+  background: #ffffff;
   padding: 16px;
   border-radius: 8px;
   flex: 1;
   transition: background 0.2s, color 0.2s;
-  font-family:"Share Tech Mono", monospace;
+  font-family: "Share Tech Mono", monospace;
 }
 
-
-
+/* menue boxes*/
 .box-title {
-    color: #000000;
-  text-shadow:
-    0 0 8px #7fef70;
-  animation: glow 1.5s ease-in-out infinite alternate;
+  font-weight: bold;
+  -webkit-text-stroke: 1.2px rgb(255, 255, 255); /* width and color */
+  font-family: sans;
+  color: rgb(0, 0, 0);
 }
 
 @keyframes glow {
   from {
-    text-shadow:
-      0 0 4px #ffffff,
-
-  } 
+    text-shadow: 0 0 80px #ff0000;
+  }
   to {
-    text-shadow:
-      0 0 12px #ffffff,
+    text-shadow: 0 0 80px #ff0000;
   }
 }
 
@@ -108,10 +101,6 @@ body {
   list-style: none;
   padding: 0;
 }
-
-
-
-
 
 /*************** Login Page ****************/
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap");
@@ -122,19 +111,15 @@ body {
   font-family: "Quicksand", sans-serif;
 }
 body {
-  background-image: linear-gradient( rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6) ), url("/home/sel/Documents/code_projects/kindergarten_1_backup_16_07_25-12_17/frontend/public/backgroundwebsite.jpeg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6)),
+    url("/home/sel/Documents/code_projects/kindergarten_1_backup_16_07_25-12_17/frontend/public/backgroundwebsite.jpeg");
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  
+
   width: 100%;
   overflow: hidden;
-}
-
-.btn-background {
-    background-image: url("/home/sel/Documents/code_projects/kindergarten_1_backup_16_07_25-12_17/frontend/public/sun.png");
-
 }
 
 .ring {
@@ -213,6 +198,7 @@ body {
   border-radius: 40px;
   font-size: 1.2em;
   color: #ffffff;
+  font-style: oblique;
   font-weight: bold;
   box-shadow: none;
   outline: none;
@@ -240,27 +226,21 @@ body {
   text-decoration: none;
 }
 
-/* === Offset Hover Effekt für info-box Buttons === */
+/* offset hover effekt für info-box buttons  */
 .info-box.offset {
   --color: #a6f7a1;
   --hover: #7fef70;
-  box-shadow:
-    0.3em 0.3em 0 0 var(--color),
-    inset 0.3em 0.3em 0 0 var(--color);
+  box-shadow: 0.3em 0.3em 0 0 var(--color), inset 0.3em 0.3em 0 0 var(--color);
   color: var(--color);
   background: none;
   border: 2px solid var(--color);
   transition: 0.25s;
-  
-  
 }
 
 .info-box.offset:hover,
 .info-box.offset:focus {
-  box-shadow:
-    0 0 0 0 var(--hover),
-    inset 6em 3.5em 0 0 var(--hover);
+  box-shadow: 0 0 0 0 var(--hover), inset 6em 3.5em 0 0 var(--hover);
   border-color: var(--hover);
-  color: #fff;
+  color: #ffffff;
   background: none;
 }

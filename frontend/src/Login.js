@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function Login({ onLogin }) {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,8 +24,8 @@ function Login({ onLogin }) {
               type="text"
               placeholder="Benutzername"
               value={username}
-              onChange={e => setUsername(e.target.value)}
-              style={{marginBottom: "12px"}}
+              onChange={(e) => setUsername(e.target.value)}
+              style={{ marginBottom: "12px" }}
             />
           </div>
           <div className="inputBx">
@@ -33,8 +33,8 @@ function Login({ onLogin }) {
               type="password"
               placeholder="Passwort"
               value={password}
-              onChange={e => setPassword(e.target.value)}
-              style={{marginBottom: "18px"}}
+              onChange={(e) => setPassword(e.target.value)}
+              style={{ marginBottom: "18px" }}
             />
           </div>
           <div className="inputBx">
@@ -42,7 +42,9 @@ function Login({ onLogin }) {
           </div>
         </form>
         <div className="links">
-          <a href="#" style={{marginLeft: "58px"}}>Passwort vergessen</a>
+          <a href="#" style={{ marginLeft: "58px" }}>
+            Passwort vergessen
+          </a>
         </div>
       </div>
     </div>
