@@ -1,0 +1,107 @@
+/* frontend/src/planung.css */
+/*
+ * dies ist eine simple css-datei für die planungskomponente.
+ */
+
+/* allgemeine styles für container und titel */
+body {
+  font-family: -apple-system, blinkmacsystemfont, "Segoe UI", roboto,
+    oxygen-sans, ubuntu, cantarell, "Helvetica Neue", sans-serif;
+  background-color: #f4f7f9;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
+
+.planung-container {
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.planung-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #1a202c;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+/* styles für mitarbeiterabschnitte */
+.planung-employee-section {
+  margin-bottom: 2.5rem;
+  padding: 2rem;
+  background-color: #f9fafb;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.planung-employee-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #2d3748;
+}
+
+/* styles für das diagramm */
+.planung-chart {
+  position: relative;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e2e2e2;
+  overflow-x: auto;
+}
+
+.planung-chart-empty {
+  font-style: italic;
+  color: #a0aec0;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.planung-task-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.planung-task {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.planung-task-label {
+  width: 200px;
+  flex-shrink: 0;
+  font-weight: 500;
+  color: #4a5568;
+}
+
+.planung-task-bar-container {
+  position: relative;
+  flex-grow: 1;
+  height: 100%;
+}
+
+.planung-task-bar {
+  height: 25px;
+  background-color: #4299e1;
+  border-radius: 4px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: width 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.planung-task-bar-label {
+  /* optional: text in den balken */
+}

@@ -43,7 +43,7 @@ function Manage() {
 
         <button
           className="info-box offset"
-          style={{ backgroundColor: "#cdffcb" }}
+          style={{ backgroundColor: "#cdffcbff" }}
         >
           <h2 id="btn-gruppen" className="box-title">
             {" "}
