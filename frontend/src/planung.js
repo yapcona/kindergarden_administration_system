@@ -503,7 +503,7 @@ const Planung = () => {
                                 handleEditTask(task);
                               }}
                             >
-                              bearbeiten
+                              ✏️
                             </button>
                             <button
                               className="delete"
@@ -512,7 +512,7 @@ const Planung = () => {
                                 handleDeleteTask(task.id);
                               }}
                             >
-                              löschen
+                              🗑️
                             </button>
                           </div>
                         )}
