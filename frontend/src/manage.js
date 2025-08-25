@@ -33,6 +33,7 @@ function Manage() {
         <button
           className="info-box offset"
           style={{ backgroundColor: "#cdffcb" }}
+          onClick={() => navigate(`/zahlen/${standort}`)}
         >
           <h2 id="btn-zahlenhistorie" className="box-title">
             {" "}
@@ -44,6 +45,7 @@ function Manage() {
         <button
           className="info-box offset"
           style={{ backgroundColor: "#cdffcbff" }}
+          onClick={() => navigate(`/gruppen/${standort}`)}
         >
           <h2 id="btn-gruppen" className="box-title">
             {" "}
@@ -55,6 +57,7 @@ function Manage() {
         <button
           className="info-box offset"
           style={{ backgroundColor: "#cdffcb" }}
+          onClick={() => navigate(`/mitarbeiter/${standort}`)}
         >
           <h2 id="btn-Mitarbeiter" className="box-title">
             {" "}
@@ -66,6 +69,7 @@ function Manage() {
         <button
           className="info-box offset"
           style={{ backgroundColor: "#cdffcb" }}
+          onClick={() => navigate(`/kinder/${standort}`)}
         >
           <h2 id="btn-Kinder" className="box-title">
             {" "}
@@ -77,6 +81,7 @@ function Manage() {
         <button
           className="info-box offset"
           style={{ backgroundColor: "#cdffcb" }}
+          onClick={() => navigate(`/eltern/${standort}`)}
         >
           <h2 id="btn-Eltern" className="box-title">
             {" "}

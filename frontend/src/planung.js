@@ -1,7 +1,6 @@
 // frontend/src/Planung.js
-// dies ist eine react-komponente für eine dynamische mitarbeiterplanung.
-// der code wurde so angepasst, dass die daten lokal im browser über localstorage gespeichert werden.
-// die ui wurde komplett überarbeitet, um ein großes gantt-diagramm anzuzeigen.
+// diese react-komponente wurde aktualisiert, um eine verbesserte scroll-funktionalität
+// sowohl horizontal als auch vertikal zu haben.
 
 import React, { useState, useEffect } from "react";
 
@@ -12,6 +11,9 @@ const Planung = () => {
     { id: "1", name: "sel" },
     { id: "2", name: "max" },
     { id: "3", name: "julia" },
+    { id: "4", name: "anna" },
+    { id: "5", name: "peter" },
+    { id: "6", name: "lena" },
   ];
 
   const initialTasks = JSON.parse(localStorage.getItem("tasks")) || [
@@ -42,6 +44,27 @@ const Planung = () => {
       start: "2025-08-25",
       end: "2025-08-30",
       employeeId: "3",
+    },
+    {
+      id: "4-1",
+      name: "neues feature entwickeln",
+      start: "2025-08-01",
+      end: "2025-09-15",
+      employeeId: "4",
+    },
+    {
+      id: "5-1",
+      name: "backend migration",
+      start: "2025-09-01",
+      end: "2025-10-10",
+      employeeId: "5",
+    },
+    {
+      id: "6-1",
+      name: "datenbank-optimierung",
+      start: "2025-09-15",
+      end: "2025-09-28",
+      employeeId: "6",
     },
   ];
 
@@ -97,11 +120,37 @@ const Planung = () => {
   const { minDate, maxDate } = calculateOverallTimeline();
   const totalDays = (maxDate - minDate) / (1000 * 60 * 60 * 24) + 1;
 
+  // funktion, die daten nach monat gruppiert.
+  const getTimelineData = () => {
+    const timelineData = [];
+    const currentDate = new Date(minDate);
+    const options = { month: "long" };
+
+    while (currentDate <= maxDate) {
+      const month = currentDate.toLocaleString("de-DE", options);
+      const year = currentDate.getFullYear();
+      const monthKey = `${month} ${year}`;
+
+      let currentMonthEntry = timelineData.find(
+        (entry) => entry.key === monthKey
+      );
+
+      if (!currentMonthEntry) {
+        currentMonthEntry = { key: monthKey, days: [] };
+        timelineData.push(currentMonthEntry);
+      }
+      currentMonthEntry.days.push(new Date(currentDate));
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+    return timelineData;
+  };
+
+  const timelineData = getTimelineData();
+
   // fügt einen neuen mitarbeiter hinzu.
   const handleAddEmployee = (e) => {
     e.preventDefault();
     if (!newEmployeeName.trim()) return;
-    // use timestamp for a more unique id
     const newId = Date.now().toString();
     setEmployees([...employees, { id: newId, name: newEmployeeName }]);
     setNewEmployeeName("");
@@ -115,7 +164,7 @@ const Planung = () => {
 
   // fügt eine neue aufgabe hinzu.
   const handleAddTask = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // prevents page reload on form submit
     if (
       !newTask.name.trim() ||
       !newTask.start ||
@@ -123,7 +172,6 @@ const Planung = () => {
       !newTask.employeeId
     )
       return;
-    // use timestamp for a more unique id
     const newId = Date.now().toString();
     setTasks([...tasks, { ...newTask, id: `${newId}` }]);
     setNewTask({ name: "", start: "", end: "", employeeId: "" });
@@ -132,7 +180,6 @@ const Planung = () => {
   // löscht eine aufgabe.
   const handleDeleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
-    // deaktiviere die anzeige der buttons, nachdem die aufgabe gelöscht wurde
     setActiveTaskId(null);
   };
 
@@ -172,23 +219,23 @@ const Planung = () => {
 
   return (
     <div className="planung-container">
-      {/* styles sind hier inline, um import-fehler zu vermeiden */}
+      {/* styles are inlined here to avoid import errors */}
       <style>{`
         body {
           font-family: -apple-system, blinkmacsystemfont, 'Segoe UI', roboto, oxygen-sans, ubuntu, cantarell, 'Helvetica Neue', sans-serif;
           background-color: #f4f7f9;
           color: #333;
           margin: 0;
-          padding: 20px-;
+          padding: 20px;
         }
         .planung-container {
           padding: 1.5rem;
-          max-width: 100%;
+          max-width: 1500px;
           margin: auto;
           background-color: #ffffff;
           border-radius: 12px;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-          width: 1800px;
+          margin-top: 10px;
         }
         .planung-title {
           font-size: 2.5rem;
@@ -200,13 +247,13 @@ const Planung = () => {
           text-align: center;
         }
         .form-section {
-            margin-bottom: 2.5rem;
-            padding: 2rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
             background-color: #f0f4f7;
             border-radius: 10px;
         }
         .form-section h2 {
-            font-size: 1.5rem;
+            font-size: 18px;
             font-weight: 600;
             margin-bottom: 1rem;
             color: #2d3748;
@@ -247,19 +294,20 @@ const Planung = () => {
             color: #000000ff;
         }
         .crud-buttons .delete {
-            background-color: #cdffcb;
+            background-color: #ffcccb;
             color: #fff;
         }
         .crud-buttons .edit:hover {
             background-color: #7fde7bff;
         }
         .crud-buttons .delete:hover {
-            background-color: #7fde7bff;
+            background-color: #ff7f7f;
         }
         .gantt-chart-wrapper {
             display: flex;
             flex-direction: column;
             gap: 2rem;
+            width: 100%;
         }
         .gantt-chart-grid {
             display: grid;
@@ -267,8 +315,11 @@ const Planung = () => {
             border: 1px solid #e2e2e2;
             border-radius: 8px;
             background-color: #ffffff;
-            padding: 20px;
-            overflow-x: auto;
+            padding: 0px;
+            overflow-x: auto; /* horizontal scrolling for the timeline */
+            max-height: 500px; /* new property: fixed height for vertical scrolling */
+            overflow-y: auto; /* new property: enable vertical scrolling */
+            position: relative; /* needed for sticky elements */
         }
         .gantt-header, .gantt-row {
             display: contents;
@@ -292,12 +343,14 @@ const Planung = () => {
             align-items: center;
             justify-content: space-between;
             gap: 10px;
+            top: 0; /* sticky-positioning requires a top-offset */
         }
         .timeline-container {
             position: relative;
             height: 100%;
             display: flex;
             align-items: center;
+            width: 100%;
         }
         .task-bar {
             height: 25px;
@@ -334,25 +387,40 @@ const Planung = () => {
             background-color: #f0f4f7;
             flex-grow: 1;
             flex-shrink: 0;
+            border-left: 1px solid #e2e2e2;
         }
-        .gantt-chart-main {
-            display: grid;
-            grid-template-columns: 200px 1fr;
+        .month-header {
+          display: flex;
+          background-color: #e2e8f0;
+          font-weight: bold;
+          border-bottom: 1px solid #e2e2e2;
+          border-top: 1px solid #e2e2e2;
+          grid-column: 2 / 3; /* ensures the header takes up the entire width of the timeline */
+          position: sticky; /* makes the month header sticky */
+          top: 0;
+          z-index: 11; /* ensures it lies on top of the employees */
         }
-        .gantt-chart-header {
-            grid-column: 2 / 3;
-            display: flex;
-            overflow-x: auto;
+        .month-cell {
+          flex-grow: 1;
+          flex-shrink: 0;
+          text-align: center;
+          padding: 10px;
+          border-left: 1px solid #fff;
         }
-        .gantt-chart-body {
-            grid-column: 2 / 3;
-            overflow-x: auto;
+        .day-header {
+          display: flex;
+          grid-column: 2 / 3;
+          border-bottom: 1px solid #e2e2e2;
+          position: sticky; /* makes the day header sticky */
+          top: 40px; /* positions it under the month header */
+          z-index: 10;
+          background-color: #f0f4f7; /* consistent background for the sticky header */
         }
       `}</style>
 
       <h1 className="planung-title">mitarbeiter-zeitplanung</h1>
 
-      {/* sektion zum hinzufügen/bearbeiten von mitarbeitern */}
+      {/* section for adding/editing employees */}
       <div className="form-section">
         <h2>mitarbeiter {editingEmployeeId ? "bearbeiten" : "hinzufügen"}</h2>
         <form
@@ -372,7 +440,7 @@ const Planung = () => {
         </form>
       </div>
 
-      {/* sektion zum hinzufügen/bearbeiten von aufgaben */}
+      {/* section for adding/editing tasks */}
       <div className="form-section">
         <h2>aufgabe {editingTaskId ? "bearbeiten" : "hinzufügen"}</h2>
         <form onSubmit={editingTaskId ? handleSaveTask : handleAddTask}>
@@ -386,7 +454,9 @@ const Planung = () => {
             <input
               type="date"
               value={newTask.start}
-              onChange={(e) => setNewTask({ ...newTask, end: e.target.value })}
+              onChange={(e) =>
+                setNewTask({ ...newTask, start: e.target.value })
+              }
             />
             <input
               type="date"
@@ -415,7 +485,7 @@ const Planung = () => {
 
       <div className="gantt-chart-wrapper">
         <div className="gantt-chart-grid">
-          {/* header-zeile */}
+          {/* header for employees */}
           <div
             className="employee-cell"
             style={{
@@ -428,7 +498,24 @@ const Planung = () => {
               mitarbeiter
             </span>
           </div>
-          <div className="date-header">
+
+          {/* new header for months */}
+          <div className="month-header">
+            {timelineData.map((monthEntry, index) => (
+              <div
+                key={index}
+                className="month-cell"
+                style={{
+                  width: `${(monthEntry.days.length / totalDays) * 100}%`,
+                }}
+              >
+                {monthEntry.key}
+              </div>
+            ))}
+          </div>
+
+          {/* new header for days */}
+          <div className="day-header">
             {Array.from({ length: totalDays }, (_, i) => {
               const date = new Date(minDate);
               date.setDate(minDate.getDate() + i);
@@ -441,13 +528,13 @@ const Planung = () => {
                     flexBasis: `calc(100% / ${totalDays})`,
                   }}
                 >
-                  {date.getDate()}.{date.getMonth() + 1}
+                  {date.getDate()}
                 </div>
               );
             })}
           </div>
 
-          {/* chart-zeilen */}
+          {/* chart rows */}
           {employees.map((employee) => {
             const employeeTasks = getEmployeeTasks(employee.id);
             return (
@@ -493,7 +580,7 @@ const Planung = () => {
                         }
                       >
                         <span className="task-bar-content">{task.name}</span>
-                        {/* buttons werden nur angezeigt, wenn die aufgabe aktiv ist */}
+                        {/* buttons are only displayed when the task is active */}
                         {activeTaskId === task.id && (
                           <div className="crud-buttons">
                             <button
