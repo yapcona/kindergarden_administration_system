@@ -1,3 +1,10 @@
+/*
+ * frontend/src/App.css
+ * korrigierte version des app.css-styles.
+ * der pfad für das hintergrundbild wurde angepasst,
+ * um kompilierungsfehler zu vermeiden.
+ */
+
 .App {
   text-align: center;
 }
@@ -111,13 +118,13 @@ body {
   font-family: "Quicksand", sans-serif;
 }
 body {
+  /* der pfad wurde so geändert, dass er auf das public-verzeichnis verweist */
   background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6)),
-    url("/home/sel/Documents/code_projects/kindergarten_1_backup_16_07_25-12_17/frontend/public/backgroundwebsite.jpeg");
+    url("/public/pictures/backgroundwebsite.jpeg");
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-
   width: 100%;
   overflow: hidden;
 }

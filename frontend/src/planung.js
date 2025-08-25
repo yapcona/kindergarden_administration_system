@@ -179,7 +179,7 @@ const Planung = () => {
           background-color: #f4f7f9;
           color: #333;
           margin: 0;
-          padding: 20px;
+          padding: 20px-;
         }
         .planung-container {
           padding: 1.5rem;
