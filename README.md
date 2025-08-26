@@ -1,8 +1,8 @@
-# Kindergarten Management 🏫
+# Kindergarden Management 🏫
 
 
 
-This is a simple web application project built with React to facilitate the management of staff, children, and parents in a kindergarten.
+This is a simple web application project built with React to facilitate the management of staff, children, and parents in a kindergarden.
 
 
 
