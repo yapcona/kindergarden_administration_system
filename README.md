@@ -30,32 +30,6 @@ This is a simple web application project built with React to facilitate the mana
 
 
 
-## Components 🧩
-
-
-
-### `mitarbeiter.js`
-
-
-
-The original component that serves as the template for the entire design. It manages basic staff information, including name, location, email, phone number, role, and login details.
-
-
-
-### `kinder.js`
-
-
-
-This component was developed based on the `mitarbeiter.js` design. It manages the children's data, including first name, last name, location, and parents.
-
-
-
-### `eltern.js`
-
-
-
-A direct copy and adaptation of `mitarbeiter.js` to manage parent data. The list combines first and last name into a single **Name** column and includes an additional column for the **Address**.
-
 
 
 ## Installation and Start 🚀
