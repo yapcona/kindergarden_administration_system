@@ -1,4 +1,4 @@
-# Organization Management 🏫
+# Organization Management
 
 ### NOTE: In this example we used a kindergarden, but it can be used for all kinds of businesses and organizations.
 
@@ -6,8 +6,7 @@ This is a simple web application project built with React to facilitate the mana
 
 
 
-## Features ✨
-
+## Features
 
 
 * **Staff Management:** A list to manage staff data.
@@ -32,7 +31,7 @@ This is a simple web application project built with React to facilitate the mana
 
 
 
-## Installation and Start 🚀
+## Installation and Start 
 
 
 
@@ -40,15 +39,15 @@ To run the project locally, follow these steps:
 
 
 
-1.  ✅ Ensure that Node.js and npm (or yarn) are installed on your system.
+1.  Ensure that Node.js and npm (or yarn) are installed on your system.
 
 
 
-2.  ✅ Clone this repository to a local directory.
+2.  Clone this repository to a local directory.
 
 
 
-3.  ✅ Open the terminal in the project directory and install the dependencies:
+3.  Open the terminal in the project directory and install the dependencies:
 
 
 
@@ -60,7 +59,7 @@ To run the project locally, follow these steps:
 
 
 
-4.  ✅ Start the development server:
+4.  Start the development server:
 
 
 
@@ -72,11 +71,11 @@ To run the project locally, follow these steps:
 
 
 
-5.  ✅ The application should automatically open in your browser (usually at `http://localhost:3000`).
+5.  The application should automatically open in your browser (usually at `http://localhost:3000`).
 
 
 
-## Usage 🖱️
+## Usage
 
 
 
